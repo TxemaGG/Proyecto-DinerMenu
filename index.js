@@ -1,6 +1,6 @@
 // APP de mi Proyecto de DinerMenu
 
-// Ventana 1: Bienvenida al usuario-cliente
+// Ventana 1: Bienvenida
 alert(
   "¡Bienvenido a DinerMenu!\n\nOfrecemos tres menús dependiendo de la hora:\n- Desayuno: 07:00 a 10:00\n- Comida: 13:00 a 16:00\n- Cena: 20:00 a 23:00\n\nPresiona 'Aceptar' para continuar"
 );
@@ -47,9 +47,21 @@ while (!horaValida) {
     horaValida = true;
   } else {
     alert(
-      "Lo sentimos majete, no hay menús disponibles a esta hora. Prueba con otro horario."
+      "Lo sentimos, no hay menús disponibles a esta hora. Prueba con otro horario."
     );
   }
+}
+
+// Función para mostrar un comentario aleatorio tras una elección correcta
+function ComentarioAleatorio() {
+  const comentarios = [
+    "¡Ummmm que buena elección!",
+    "¡Buen ojo!",
+    "¡Rico, rico, vas a saborearlo!",
+    "¡Vas camino de una combinación de menú estupenda!"
+  ];
+  const indice = Math.floor(Math.random() * comentarios.length);
+  alert(comentarios[indice]);
 }
 
 // Función para mostrar las diferentes opciones y obtener una selección válida
@@ -63,6 +75,7 @@ function seleccionarPlato(titulo, opciones) {
   while (true) {
     eleccion = prompt(mensaje + "\nElija una opción (1, 2 o 3):");
     if (opciones[eleccion]) {
+      ComentarioAleatorio();
       return opciones[eleccion];
     } else {
       alert(
@@ -153,7 +166,7 @@ const platoPrincipal = seleccionarPlato("Plato Principal", platosPrincipales);
 const segundoPlato = seleccionarPlato("Segundo Plato", segundos);
 const postre = seleccionarPlato("Postre", postres);
 
-// Ventana final: Resumen de la comanda, con el nombre, la hora de la reserva y el precio total.
+// Ventana final: Resumen de la comanda, con nombre, la hora de la reserva y el precio total.
 const total = platoPrincipal.precio + segundoPlato.precio + postre.precio;
 
 alert(
